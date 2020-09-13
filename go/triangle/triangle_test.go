@@ -31,6 +31,9 @@ var testData = []testCase{
 	{NaT, 1, 1, 3},    // fails triangle inequality
 	{NaT, 2, 5, 2},    // another
 	{NaT, 7, 3, 2},    // another
+	{Deg, 7, 3, 4},    // degenerate
+	{Deg, 1, 3, 2},    // another
+	{Deg, 9, 2, 11},   // another
 }
 
 // generate cases with NaN and Infs, append to basic cases

@@ -1,28 +1,41 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package triangle should have a package comment that summarizes what it's about.
-// https://golang.org/doc/effective_go.html#commentary
+// Package triage categorizes triangles.
 package triangle
 
-
-// Notice KindFromSides() returns this type. Pick a suitable data type.
-type Kind
-
-const (
-    // Pick values for the following identifiers used by the test program.
-    NaT // not a triangle
-    Equ // equilateral
-    Iso // isosceles
-    Sca // scalene
+import (
+	"math"
 )
 
-// KindFromSides should have a comment documenting it.
+type Kind int
+
+const (
+	NaT Kind = iota // Not a triangle
+	Deg             // Degenerate
+	Equ             // Equilateral
+	Iso             // Isosceles
+	Sca             // Scalene
+)
+
+// Function isBad returns true if x is a bad number (NaN, positive Inf, or negative Inf)
+func isBad(x float64) bool {
+	return math.IsNaN(x) || math.IsInf(x, 0)
+}
+
+// Function KindFromSides returns the kind of triangle given its side-lengths a, b, and c.
 func KindFromSides(a, b, c float64) Kind {
-	// Write some code here to pass the test suite.
-	// Then remove all the stock comments.
-	// They're here to help you get started but they only clutter a finished solution.
-	// If you leave them in, reviewers may protest!
-	var k Kind
-	return k
+	switch {
+	case isBad(a) || isBad(b) || isBad(c):
+		return NaT
+	case a <= 0.0 || b <= 0.0 || c <= 0.0:
+		return NaT
+	case a < b+c || b < a+c || c < a+b:
+		return NaT
+	case a == b+c || b == a+c || c == a+b:
+		return Deg
+	case a == b && b == c:
+		return Equ
+	case a == b || b == c || a == c:
+		return Iso
+	default:
+		return Sca
+	}
 }
