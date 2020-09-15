@@ -15,16 +15,9 @@ var yes = void{}
 func IsPangram(word string) bool {
 	seen := map[rune]void{}
 	for _, char := range word {
-		if !(char >= 'a' && char <= 'z') && !(char >= 'A' && char <= 'Z') {
-			continue
-		}
-		seen[unicode.ToLower(char)] = yes
-	}
-	seenAll := true
-	for char := 'a'; seenAll && char <= 'z'; char++ {
-		if _, present := seen[char]; !present {
-			seenAll = false
+		if unicode.IsLetter(char) {
+			seen[unicode.ToLower(char)] = yes
 		}
 	}
-	return seenAll
+	return len(seen) == 26
 }
