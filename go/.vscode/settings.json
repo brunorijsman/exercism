@@ -6,6 +6,7 @@
         "afer",
         "gigasecond",
         "gigaseconds",
-        "lsproduct"
+        "lsproduct",
+        "luhn"
     ]
 }
