@@ -1,4 +1,4 @@
-// Exercism exercise prime-factors.
+// Go exercise prime-factors.
 package prime
 
 // Compute prime factors of n using trial division method.
