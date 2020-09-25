@@ -12,6 +12,7 @@
         "gigaseconds",
         "lsproduct",
         "luhn",
+        "strs",
         "upto"
     ]
 }
