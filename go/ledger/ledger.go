@@ -13,6 +13,7 @@ package ledger
 // 9. Clearer variable names
 // 10. Remove unneeded temporary array ss
 // 11. Simplify localization and formating of price
+// 12. Use tabel-driver localization instead of switch statements
 
 import (
 	"errors"
